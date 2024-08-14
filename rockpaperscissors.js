@@ -9,6 +9,8 @@ function playGame() {
             humanScore++;
         } else if (roundResult == "lose") {
             computerScore++;
+        } else if(roundResult != "tie") {
+            console.log(`Invalid round. Choose carefully next time. ${5 - gameCounter} round remain.`)
         }
         gameCounter++;
     }
@@ -36,8 +38,17 @@ function playGame() {
     }
 
     function getHumanChoice() {
-        let humanChoice = prompt("Choose Paper, Scissors, or Rock!");
-        humanChoice = humanChoice.toLowerCase();
+        let flag = false;
+        let humanChoice;
+
+        while (!flag) {
+            humanChoice = prompt("Choose Paper, Scissors, or Rock!");
+            humanChoice = humanChoice.toLowerCase();
+
+            if (humanChoice == "rock" | humanChoice == "paper" | humanChoice == "scissors") {
+                flag = true;
+            }
+        }
         return humanChoice;
     }
 
