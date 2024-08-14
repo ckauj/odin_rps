@@ -26,14 +26,12 @@ function playGame() {
         let randomNumber = Math.floor(Math.random() * 3);
 
         if (randomNumber == 0) {
-            computerChoice = "ROCK";
+            computerChoice = "rock";
         } else if (randomNumber == 1) {
-            computerChoice = "PAPER";
+            computerChoice = "paper";
         } else {
-            computerChoice = "SCISSORS";
+            computerChoice = "scissors";
         }
-
-        computerChoice = computerChoice.toLowerCase();
         return computerChoice;
     }
 
