@@ -7,11 +7,9 @@ playGame:
 	WHILE gameCounter is less than 5
 		INIT roundResult
 		STORE playRound result in roundResult
-		IF roundResult is 1
+		IF roundResult is "win"
 			INCREMENT humanWins
-		ELSE IF roundResult is 0
-			CONTINUE while loop
-		ELSE
+		ELSE IF roundResult is "lose"
 			INCREMENT computerWins
 		END IF
 		INCREMENT gameCounter
@@ -30,44 +28,29 @@ playRound:
 	CALL getHumanChoice
 	STORE getHumanChoice value in humanChoice
 	IF humanChoice equals rock
-		IF comptuerChoice equals rock
-			SHOW message "You tied!"
-			RETURN 0
-		ELSE IF computerChoice equals paper
-			SHOW message "You lose!"
-			RETURN -1
-		ELSE IF computerChoice equals scissors
-			SHOW message "You Win!"
-			Return 1
-	ELSE IF humanChoice equals paper 
-		IF computerChoice equals paper
-			SHOW message "You Tied!"
-			RETURN 0
-		ELSE IF computerChoice equals rock
-			SHOW message "You Win!"
-			RETURN 1
-		ELSE IF computerChoice equals scissors
-			SHOW message "You Lose!"
-			RETURN -1
-	ELSE IF humanChoice equals scissors
-		IF computerChoice equals scissors
-			SHOW message "You Tied!"
-			RETURN 0
-		ELSE IF computerChoice equals rock
-			SHOW message "You Lose!"
-			RETURN -1
-		ELSE IF computerChoice equals paper
-			SHOW message "You Win!"
-			RETURN 1
+		IF humanChoice is rock and computerChoice is scissors
+				OR humanChoice is scissors and computerChoice is paper
+				OR humanChoice is paper and computerChoice is rock
+			RETURN roundResult equals "win"
+			SHOW message "You win"
+		ELSE IF humanChoice is rock and computerChoice is paper
+				OR humanChoice is scissors and computerChoice is rock
+				OR humanChoice is paper and computerChoice is scissors
+			RETURN roundResult equals "lose"
+			SHOW message "You lose"
+		ELSE
+			RETURN roundResult equals "tie"
+			SHOW message "You tied"
+
 	END IF
 
 getComputerChoice:
 	INIT computerChoice
 	INIT randomNumber
-	SET randomNumber equal to value of Math.random multiplied by 100
-	IF randomNumber is between 0 and 32
+	SET randomNumber equal to value of Math.random multiplied by 3
+	IF randomNumber is 0
 		SET computerChoice equal to rock
-	ELSE IF randomNumber is between 33 and 66
+	ELSE IF randomNumber is 1
 		SET computerChoice equal to paper
 	ELSE
 		SET computerChoice equal to scissors
