@@ -44,8 +44,6 @@ function playGame() {
     }
 
     function playRound (humanChoice, computerChoice) {
-        let computerChoice = computerChoice;
-        let humanChoice = humanChoice;
         let roundValue = 0;
 
         if (humanChoice == "rock") {
