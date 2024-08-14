@@ -1,0 +1,82 @@
+ROCK PAPER SCISSORS
+
+playGame: 
+	INIT gameCounter to 0
+	INIT humanWins to 0
+	INIT computerWins to 0
+	WHILE gameCounter is less than 5
+		INIT roundResult
+		STORE playRound result in roundResult
+		IF roundResult is 1
+			INCREMENT humanWins
+		ELSE IF roundResult is 0
+			CONTINUE while loop
+		ELSE
+			INCREMENT computerWins
+		END IF
+		INCREMENT gameCounter
+	END WHILE
+	IF humanWins is greater than computerWins
+		SHOW message telling player their score
+	ELSE
+		SHOW message telling player they lost, with computer score
+	END IF
+
+playRound:
+	INIT computerChoice
+	INIT humanChoice
+	CALL getComputerChoice
+	STORE getComputerChoice value in computerChoice
+	CALL getHumanChoice
+	STORE getHumanChoice value in humanChoice
+	IF humanChoice equals rock
+		IF comptuerChoice equals rock
+			SHOW message "You tied!"
+			RETURN 0
+		ELSE IF computerChoice equals paper
+			SHOW message "You lose!"
+			RETURN -1
+		ELSE IF computerChoice equals scissors
+			SHOW message "You Win!"
+			Return 1
+	ELSE IF humanChoice equals paper 
+		IF computerChoice equals paper
+			SHOW message "You Tied!"
+			RETURN 0
+		ELSE IF computerChoice equals rock
+			SHOW message "You Win!"
+			RETURN 1
+		ELSE IF computerChoice equals scissors
+			SHOW message "You Lose!"
+			RETURN -1
+	ELSE IF humanChoice equals scissors
+		IF computerChoice equals scissors
+			SHOW message "You Tied!"
+			RETURN 0
+		ELSE IF computerChoice equals rock
+			SHOW message "You Lose!"
+			RETURN -1
+		ELSE IF computerChoice equals paper
+			SHOW message "You Win!"
+			RETURN 1
+	END IF
+
+getComputerChoice:
+	INIT computerChoice
+	INIT randomNumber
+	SET randomNumber equal to value of Math.random multiplied by 100
+	IF randomNumber is between 0 and 32
+		SET computerChoice equal to rock
+	ELSE IF randomNumber is between 33 and 66
+		SET computerChoice equal to paper
+	ELSE
+		SET computerChoice equal to scissors
+	END IF
+	RETURN computerChoice
+
+getHumanChoice:
+	INIT humanChoice
+	PROMPT user for choice of paper, scissors or rock
+	SET humanChoice equal to user response 
+	CHANGE humanChoice to be lower case
+	RETURN humanChoice
