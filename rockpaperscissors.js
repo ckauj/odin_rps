@@ -4,7 +4,7 @@ function playGame() {
     let gameCounter = 0;
 
     while (gameCounter < 5) {
-        let roundResult = playRound(getHumanChoice(), getComputerChoice());
+        const roundResult = playRound(getHumanChoice(), getComputerChoice());
         if (roundResult == "win") {
             humanScore++;
         } else if (roundResult == "lose") {
@@ -25,7 +25,7 @@ function playGame() {
 
     function getComputerChoice() {
         let computerChoice = "";
-        let randomNumber = Math.floor(Math.random() * 3);
+        const randomNumber = Math.floor(Math.random() * 3);
 
         if (randomNumber == 0) {
             computerChoice = "rock";
