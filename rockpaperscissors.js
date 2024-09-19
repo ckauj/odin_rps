@@ -3,16 +3,11 @@ function playGame() {
     let humanScore = 0;
     let gameCounter = 0;
 
-    while (gameCounter < 5) {
-        const roundResult = playRound(getHumanChoice(), getComputerChoice());
-        if (roundResult == "win") {
-            humanScore++;
-        } else if (roundResult == "lose") {
-            computerScore++;
-        } else if(roundResult != "tie") {
-            console.log(`Invalid round. Choose carefully next time. ${5 - gameCounter} round remain.`)
-        }
-        gameCounter++;
+    const roundResult = playRound(getHumanChoice(), getComputerChoice());
+    if (roundResult == "win") {
+        humanScore++;
+    } else if (roundResult == "lose") {
+        computerScore++;
     }
 
     if (humanScore > computerScore) {
