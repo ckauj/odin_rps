@@ -12,6 +12,10 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
+    <div id="score-container">
+        <p>Player score: <span id="player-score">0</span></p>
+        <p>Computer score: <span id="computer-score">0</span></p>
+    </div>
     <script>
         const choices = document.querySelectorAll("button");
         for (const choice of choices) {
