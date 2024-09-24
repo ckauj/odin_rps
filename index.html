@@ -12,5 +12,13 @@
         <button id="paper">Paper</button>
         <button id="scissors">Scissors</button>
     </div>
+    <script>
+        const choices = document.querySelectorAll("button");
+        for (const choice of choices) {
+            choice.addEventListener("click", function() {
+                playRound(choice.id);
+            });
+        };
+    </script>
 </body>
 </html>
