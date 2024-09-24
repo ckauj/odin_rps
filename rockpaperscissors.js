@@ -2,14 +2,19 @@ let computerScore = 0;
 let playerScore = 0;
 
 function evaluateGameWinner() {
+    const winnerMessage = document.createElement("p");
+
     if (playerScore === 5) {
-        console.log(`You win! Your score: ${playerScore}, Computer score: ${computerScore}`)
+        winnerMessage.textContent = `You win! Your score: ${playerScore}, Computer score: ${computerScore}`;
     } else if (computerScore === 5) {
-        console.log(`You lose! Your score: ${playerScore}, Computer score: ${computerScore}`)
+        winnerMessage.textContent = `You lose! Your score: ${playerScore}, Computer score: ${computerScore}`;
     } else {
         return;
     }
 
+    const gameDisplay = document.querySelector("#score-container");
+    gameDisplay.appendChild(winnerMessage);
+    
     endGame();
 }
 
