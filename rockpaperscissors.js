@@ -58,4 +58,25 @@ function playRound (playerChoice) {
 function endGame() {
     playerScore = 0;
     computerScore = 0;
+
+    const optionButtons = document.querySelectorAll("#option-container > button");
+    for (option of optionButtons) {
+        option.disabled = true;
+    }
+    const gameDisplay = document.querySelector("#score-container");
+    const resetGameButton = document.createElement("button");
+    const computerScoreDisplay = document.querySelector("#computer-score");
+    const playerScoreDisplay = document.querySelector("#player-score");
+
+    resetGameButton.textContent = "Reset";
+    gameDisplay.appendChild(resetGameButton);
+    resetGameButton.addEventListener("click", function() {
+        gameDisplay.textContent = '';
+        computerScoreDisplay.textContent = 0;
+        playerScoreDisplay.textContent = 0;
+
+        for (option of optionButtons) {
+            option.disabled = false;
+        }
+    });
 }
