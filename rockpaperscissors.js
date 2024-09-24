@@ -1,21 +1,16 @@
 let computerScore = 0;
 let playerScore = 0;
 
-function playGame() {
-    const roundResult = playRound(getplayerChoice(), getComputerChoice());
-    if (roundResult == "win") {
-        playerScore++;
-    } else if (roundResult == "lose") {
-        computerScore++;
-    }
-
-    if (playerScore > computerScore) {
+function evaluateGameWinner() {
+    if (playerScore === 5) {
         console.log(`You win! Your score: ${playerScore}, Computer score: ${computerScore}`)
-    } else if (playerScore < computerScore) {
+    } else if (computerScore === 5) {
         console.log(`You lose! Your score: ${playerScore}, Computer score: ${computerScore}`)
     } else {
-        console.log(`You tied! Your score: ${playerScore}, Computer score: ${computerScore}`)
+        return;
     }
+
+    endGame();
 }
 
 function getComputerChoice() {
@@ -32,25 +27,29 @@ function getComputerChoice() {
     return computerChoice;
 }
 
-function playRound (playerChoice, computerChoice) {
-    let roundValue = "";
+function playRound (playerChoice) {
 
     playerChoice = playerChoice.toLowerCase();
+    const computerChoice = getComputerChoice();
 
     if (playerChoice == "rock" & computerChoice == "scissors"
         | playerChoice == "paper" & computerChoice == "rock"
         | playerChoice == "scissors" & computerChoice == "paper") {
-            roundValue = "win";
+            playerScore++;
             console.log(`You win! ${playerChoice} beats ${computerChoice}`);
         } else if (playerChoice == "rock" & computerChoice == "paper"
         | playerChoice == "paper" & computerChoice == "scissors"
         | playerChoice == "scissors" & computerChoice == "rock") {
-            roundValue = "lose";
+            computerScore++;
             console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
         } else {
-            roundValue = "tie";
             console.log(`You tied!`);
         }
 
-    return roundValue;
+    evaluateGameWinner();
+}
+
+function endGame() {
+    playerScore = 0;
+    computerScore = 0;
 }
