@@ -1,8 +1,7 @@
-function playGame() {
-    let computerScore = 0;
-    let playerScore = 0;
-    let gameCounter = 0;
+let computerScore = 0;
+let playerScore = 0;
 
+function playGame() {
     const roundResult = playRound(getplayerChoice(), getComputerChoice());
     if (roundResult == "win") {
         playerScore++;
