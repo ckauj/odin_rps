@@ -31,20 +31,26 @@ function playRound (playerChoice) {
 
     playerChoice = playerChoice.toLowerCase();
     const computerChoice = getComputerChoice();
+    const gameDisplay = document.querySelector("#score-container");
+    const computerScoreDisplay = document.querySelector("#computer-score");
+    const playerScoreDisplay = document.querySelector("#player-score");
+    const roundDisplay = document.createElement("p");
 
     if (playerChoice == "rock" & computerChoice == "scissors"
         | playerChoice == "paper" & computerChoice == "rock"
         | playerChoice == "scissors" & computerChoice == "paper") {
-            playerScore++;
-            console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+            playerScoreDisplay.textContent = ++playerScore;
+            roundDisplay.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         } else if (playerChoice == "rock" & computerChoice == "paper"
         | playerChoice == "paper" & computerChoice == "scissors"
         | playerChoice == "scissors" & computerChoice == "rock") {
-            computerScore++;
-            console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+            computerScoreDisplay.textContent = ++computerScore;
+            roundDisplay.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
         } else {
-            console.log(`You tied!`);
+            roundDisplay.textContent = `You tied!`;
         }
+
+        gameDisplay.appendChild(roundDisplay);
 
     evaluateGameWinner();
 }
